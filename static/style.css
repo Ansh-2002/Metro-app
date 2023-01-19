@@ -59,7 +59,7 @@ body {
     opacity: 0.2;
     background-size: cover; */background-repeat: no-repeat;
     background-size: 200px 300px;
-    max-height: 600px;
+    max-height: 700px;
     
     margin: 40px 10px;
     padding: 20px 20px 20px 30px;
@@ -201,22 +201,33 @@ body {
     /* background-color: blue; */
   }
   .search-station,.nearest-station{
-    margin-top: 100px;;
+    margin-top: 80px;;
     margin: 20px;
     font-size: 4em;
     text-align: right;
   }
-  .search-station-box,.nearest-station-box{
+  .search-station-box,.nearest-station-box a{
     display: inline-block;
+    color: rgb(84, 84, 84);
+    text-decoration: none;
   }
+
   .search-station-box p, .nearest-station-box p{
    margin-top:10px;
 }
 .search-station-button,.nearest-station-button{
-    border: solid 3px black;
+    /* box-shadow:0px 0px 10px rgb(100, 100, 255); */
+    border: solid 3px rgb(84, 84, 84);
     border-radius: 10px;
     width: 110px;
-    margin-top: 50px;
+    margin-top: 40px;
+    color: rgb(84, 84, 84);
+}
+.search-station-button:hover,.nearest-station-button:hover{
+    box-shadow:0px 0px 5px rgb(255, 140, 140);
+    border: solid 3px rgb(211, 0, 0);;
+    color: rgb(211, 0, 0);;
+    cursor: pointer;
 }
 .footer{
     width:200%;
@@ -261,10 +272,154 @@ body {
 ul {
     list-style: none;
   }
-  ul li::before {
+  /* ul li::before {
     content: "•";
     color: red;
     font-weight: bold;
     display: inline-block;
     width: 15px;
+  } */
+  .center{
+    text-align: center;
   }
+  .containerx .icon{
+    color:green;
+  }
+
+  .fare-time{
+    text-align: right;
+    margin-top: 1.3rem;;
+    margin-right: 2rem;
+}
+.containerx h4{
+    padding-top: 2rem;
+}
+
+  .autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    /* display: inline-block; */
+  }
+
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+  
+  #myInput {
+    display: none;
+    margin-top: 30px;
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  /* #myInput input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+  } */
+  #mySubmit {
+    display: none;
+    background-color: DodgerBlue;
+    color: #fff;
+  }
+
+  .imgabt{
+    margin: 20px 0px 20px 0px;
+    border-radius: 20px;
+  }
+
+  .dibba{
+    padding: 10px;
+    border-radius:20px ;
+  }
+
+  .conimg{
+    border-radius: 50%;
+  }
+
+  
+  #interchange {
+      margin-right: 5%;;
+      float: right;
+      border: none;
+    }
+    
+    
+    .comcent{
+        margin: auto;
+        width:70%;
+        justify-content: center;
+        text-align: center; 
+    }
+ .faliure{
+    color:red;
+ }
+ #myInput{
+    width:300px;
+ }
+ .search-button{
+    display: inline-block;
+ }
+
+ .head-colo{
+    color: #0f9db9;
+ }
+ .bg1-colo1:hover{
+    background-color: #60dedd
+ }
+ .bg1-colo2:hover{
+    background-color: #f59556
+ }
+ .bg1-colo3:hover{
+    background-color: #9b8ce0
+ }
+ .bg1-colo4:hover{
+    background-color: #fff28e
+ }
+
+ .bg2-colo1, .bg2-colo2{
+    margin: 20px;
+    border-radius: 10px;
+ }
+
+ .bg2-colo1:hover{
+    background-color: rgb(204, 193, 255);
+ }
+
+ .bg2-colo2:hover{
+    background-color: #7ce2e1;
+ }
+
+ .foot-icon{
+    margin:25px;
+    justify-content: center;
+    text-align: center;
+
+ }
+
+ /* 7ce2e1
+    c4b7ff*/

@@ -1,0 +1,190 @@
+
+{% extends "layout.html" %}
+
+
+{% block body%}
+<div class="box-2 col  tableBox">
+    <div>
+        <h5 id="station" class="station-name">{{searchName}} </h5>
+
+
+        <!-- table -->
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Station:</td>
+              <td>
+                <h5 id="station-name">{{searchName}}</h5>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Lines:</td>
+              <td>
+                <div class="lines row" lines>
+                  <template template1>
+                    <div class="col">
+                      <h5 class="text" id="line-text"></h5>
+                    </div>
+                  </template>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Layout:</td>
+              <td>
+                <div class="layots row" layots>
+                  <template template2>
+                    <div class="col">
+                      <h5 class="text" id="layot-text"></h5>
+                    </div>
+                  </template>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Platform: </td>
+              <td>
+                <div class="platforms row" platforms>
+                  <template template3>
+                    <div class="col">
+                      <h5 class="text" id="platform-text"></h5>
+                    </div>
+                  </template>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Parking: </td>
+              <td><h5 id="station-parking"></h5></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>elevator: </td>
+              <td><h5 id="station-elivator"></h5></td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>Disabled friendly: </td>
+              <td><h5 id="station-disabled"></h5></td>
+            </tr>
+          </tbody>
+        </table>
+
+        </div>
+    </div>
+</div>
+  
+
+    <div id="map" style="height: 500px; width: 100%; margin-bottom: 50px; border-radius:20px;"></div>
+ 
+  {% endblock %}
+
+
+{% block javascript%}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIsETF_T2gFokW1ZBo790JYJGMROdI-Y"></script>
+<script>
+  const template1 = document.querySelector("[template1]")
+  const lines = document.querySelector("[lines]")
+  
+  const template2 = document.querySelector("[template2]")
+  const layots = document.querySelector("[layots]")
+
+  const template3 = document.querySelector("[template3]")
+  const platforms = document.querySelector("[platforms]")
+
+
+  function initMap(longitude, latitude) {
+    let myLatLng = {lat: latitude, lng: longitude};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 18,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Metro Station'
+    });
+  }
+
+
+      // let longitude = 70;
+      // let latitude = 28;
+
+      // calculation of nearest metro station
+      fetch('/static/data.json')
+      .then((response) => response.json())
+      .then(data => {
+          let ansName = "balabla",stationLine,layoutt,platform,parking = "Yes",elivator="Yes",disabledFriendly="Yes" ;
+          let searchName = document.querySelector("#station").innerText;
+
+          data.forEach(element => {
+            // console.log(element.name);
+            // console.log(searchName);
+                if(element.name.toString().toLowerCase() == searchName.toLowerCase()) {
+                  // console.log(element.name)
+                  ansName = element.name;
+                  stationLine = element.details.line;
+                  layoutt = element.details.layout;
+                  platform = element.details.platform;
+                   if(element.details['parking available'] ==  0){
+                     parking = "No";
+                   }
+                   if(element.details['elevator available'] ==  0){
+                     parking = "No";
+                   }
+                    if(element.details['disabled friendly'] ==  0){
+                     parking = "No";
+                   }
+                    
+                   initMap(element.details.longitude, element.details.latitude);
+                   //document.querySelector("#station").innerHTML = ansName;
+                   //document.querySelector("#station-name").innerHTML = ansName;
+                   document.querySelector("#station-parking").innerHTML = parking;
+                   document.querySelector("#station-elivator").innerHTML = elivator;
+                   document.querySelector("#station-disabled").innerHTML = disabledFriendly;
+                   //console.log("yeyeyeyeyeyeyeye")
+                  //  break;
+              }
+          })
+
+
+    
+          
+      stationLine.forEach(element =>{
+        const myArray = element.split(" ");
+        let color = myArray[0];
+
+        const card = template1.content.cloneNode(true).children[0]
+        const text = card.querySelector("#line-text")
+        text.textContent = element
+        text.style.color = color;
+        lines.append(card);
+      })
+
+      layoutt.forEach(element =>{
+        const card = template2.content.cloneNode(true).children[0]
+        const text = card.querySelector("#layot-text")
+        text.textContent = element
+        layots.append(card);
+      })
+
+      platform.forEach(element =>{
+        const card = template3.content.cloneNode(true).children[0]
+        const text = card.querySelector("#platform-text")
+        text.textContent = element
+        platforms.append(card);
+      })
+      
+      
+
+     });
+ 
+</script>
+{% endblock %}

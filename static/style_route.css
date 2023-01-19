@@ -1,13 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 /** * Line colors */
-html {
+/* html {
 	 font-size: 1.25em;
 	 line-height: 1.4;
 	 font-family: 'Open Sans Condensed', sans-serif;
 }
 body {
 	 background-color: #eee;
+} */
+
+:root {
+	--color: red;
 }
+
  .containerx {
   padding: 10%;
   border: 1px solid black;
@@ -17,7 +22,24 @@ body {
 	 /* margin: 0 auto; */
 	 border-radius: 0.25em;
 }
- h1 small, h2 small {
+
+.path-box li span{
+	padding: 3px;
+	padding-left: 15px;
+	border-left: 3px solid var(--color);
+	list-style-type: none;
+	font-weight: bold;
+}
+
+.bullet {
+	display: inline-flex;
+	margin-right: -11px;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: var(--color);
+}
+ /* h1 small, h2 small {
 	 font-weight: 100;
 }
  li {
@@ -25,23 +47,23 @@ body {
 	 margin-bottom: 0.2em;
 }
 /** * Set the line station list */
- .line {
+ /* .line {
 	 margin-left: 7.36em;
 	 list-style-type: none;
 	 padding: 0;
-}
+} */
 /** / Line color */
- .line--m2 {
+ /* .line--m2 {
 	 border-left: 4px solid #ed168c;
-}
+} */
 /** * station--default: place the station name at the left of the line and add normal station circle * station--start: same as default but place an terminus circle for the first station * station--end: same as station-start but for the bottom station */
- .station {
+ /* .station {
 	 margin-left: -10em;
 	 width: 9em;
 	 text-align: right;
 	 line-height: 1.75em;
-}
- .station--default:before {
+} */
+ /* .station--default:before {
 	 content: "";
 	 position: absolute;
 	 left: 9.75em;
@@ -51,8 +73,8 @@ body {
 	 border: 2px solid black;
 	 background-color: #fff;
 	 border-radius: 50%;
-}
- .station--start:before {
+} */
+ /* .station--start:before {
 	 content: "";
 	 position: absolute;
 	 left: 9.75em;
@@ -62,8 +84,8 @@ body {
 	 background-color: #fff;
 	 border-bottom-left-radius: 999px;
 	 border-bottom-right-radius: 999px;
-}
- .station--end:before {
+} */
+ /* .station--end:before {
 	 content: "";
 	 position: absolute;
 	 left: 9.75em;
@@ -74,24 +96,24 @@ body {
 	 background-color: #fff;
 	 border-top-left-radius: 999px;
 	 border-top-right-radius: 999px;
-}
+} */
 /** * Place connection list at the right of the line */
- .connections {
+ /* .connections {
 	 position: absolute;
 	 display: inline;
-}
+} */
 /** * Display lines inline and set the padding between each of them */
- .connections__line {
+ /* .connections__line {
 	 display: inline-block;
 	 padding-left: 0.25em;
 	 line-height: 1.75em;
-}
- .connections__line svg {
+} */
+ /* .connections__line svg {
 	 height: 1em;
 	 width: 1em;
-}
+} */
 /** * Badges */
- .badge {
+ /* .badge {
 	 display: inline-block;
 	 width: 0.8em;
 	 height: 0.8em;
@@ -102,53 +124,53 @@ body {
 	 color: #fff;
 	 border: 1px solid rgba(75, 75, 75, 0.5);
 	 text-shadow: rgba(75, 75, 75, 0.5) 1px 0px, rgba(75, 75, 75, 0.5) 0px 1px, rgba(75, 75, 75, 0.5) -1px 0px, rgba(75, 75, 75, 0.5) 0px -1px;
-}
+} */
 /** * Style for buses */
 /** * Style for metro */
- .badge--metro {
+ /* .badge--metro {
 	 border-radius: 50%;
-}
+} */
 /** * Colors for each lines */
- .badge--color-m1 {
+ /* .badge--color-m1 {
 	 background-color: #ed168c;
-}
- .badge--color-m2 {
+} */
+ /* .badge--color-m2 {
 	 background-color: #ed168c;
-}
- .badge--color-b1 {
+} */
+ /* .badge--color-b1 {
 	 background-color: #ee1d23;
-}
- .badge--color-b2 {
+} */
+ /* .badge--color-b2 {
 	 background-color: #fef135;
-}
- .badge--color-b3 {
+} */
+ /* .badge--color-b3 {
 	 background-color: #939598;
-}
- .badge--color-b6 {
+} */
+ /* .badge--color-b6 {
 	 background-color: #1daeef;
-}
- .badge--color-b7 {
+} */
+ /* .badge--color-b7 {
 	 background-color: #2e2f92;
-}
- .badge--color-b8 {
+} */
+ /* .badge--color-b8 {
 	 background-color: #8e52a1;
-}
- .badge--color-b18 {
+} */
+ /* .badge--color-b18 {
 	 background-color: #6acdf3;
-}
- .badge--color-b21 {
+} */
+ /* .badge--color-b21 {
 	 background-color: #8e52a1;
-}
- .badge--color-b22 {
+} */
+ /* .badge--color-b22 {
 	 background-color: #cb572b;
-}
- .badge--color-b25 {
+} */
+ /* .badge--color-b25 {
 	 background-color: #adc4e5;
-}
- .badge--color-b41 {
+} */
+ /* .badge--color-b41 {
 	 background-color: #b41e8d;
-}
- .badge--color-b42 {
+} */
+ /* .badge--color-b42 {
 	 background-color: #fedc32;
 }
  .badge--color-b45 {
@@ -174,12 +196,12 @@ body {
 }
  .badge--color-b75 {
 	 background-color: #fef135;
-}
- .label {
+} */
+ /* .label {
 	 background-color: #ccc;
 	 border: 0.05em solid #000;
 	 padding: 0.15em 0.4em;
 	 border-radius: 0.25em;
 	 font-size: 0.7em;
-}
+}  */
  

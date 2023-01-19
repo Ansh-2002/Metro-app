@@ -4,26 +4,72 @@
     
 
 <div class="box-2 col-sm" style="min-width: 550px;">
-        <h2>Path : </h2>
         <link rel="stylesheet" href="/static/style_route.css">
             <div class="containerx">
-            <h4 style="box-shadow: 0px 3px 10px rgb(187, 187, 187); margin-bottom:10%; text-align: center;">Transportation line </h4>
+            <div style="box-shadow: 0px 3px 10px rgb(187, 187, 187); margin-bottom:5%; padding: 20px 0; ">
+                <h4 class="center"><u> Transportation line</u> </h4>
+                <div class="fare-time">
+                    <h6 > <i class="fa-regular fa-clock"> : {{dict['time']|int}} min</i>  </h6>
+                    <h6> <i class="fa-sharp fa-solid fa-indian-rupee-sign icon"> : <span >{{cost}}</span> </i>  </h6>
+                </div>
+                <div>     
+
             
 
-            <ul style="{{syle}}" class="line line--m2"  >
-
-
-                <li class="station station--start"><strong>{{dict['path'][0]}}</strong></li>
-                {% for i in range(1, dict['path']|length -1 ) %}
-                    <li class="station station--default" >{{dict['path'][i]}} </li>
-                {% endfor %}
-
+            {% set count = namespace(value=0) %}
+            {% set count2 = namespace(value=0) %}
+            <ul class="path-box" >
+                {% for i in range(0, dict['path']|length ) %}
                 
-                <li class="station station--end"><strong>{{ dict['path'][dict['path']|length -1]}} </strong></li>
+                    <li>
+                        {% set color = dict['line2'][count2.value] %}
+        
+                        <!-- this is checking interchange -->
+                        {% if dict['interchange'][count.value]==dict['path'][i] %}
+                            <span id="interchange">---interchange</span>
+                            {% set count.value = count.value + 1 %}
+                            {% set count2.value = count.value - 1 %}
+                            
+                        {% endif %}
+        
+                        {% if count.value == 0 %}
+                            {% set color = dict['line1'][0] %}
+                        {% endif %}
+                        {% if color == "violet" %}
+                            {% set color = "#800080" %}
+                        {% endif %}
+                        {% if color == "Airport Express" %}
+                            {% set color = "#f56200" %}
+                        {% endif %}
+                        {% if color == "red" %}
+                            {% set color = "#FF0000" %}
+                        {% endif %}
+                        {% if color == "pink" %}
+                            {% set color = "#FA8072" %}
+                        {% endif %}
+                        {% if color == "magenta" %}
+                            {% set color = "#FF00FF" %}
+                        {% endif %}
+                        {% if color == "greenbranch" %}
+                            {% set color = "#008000" %}
+                        {% endif %}
+                        {% if color == "bluebranch" %}
+                            {% set color = "#0000FF" %}
+                        {% endif %}
+                        {% if color == "1.2km Skywalk" %}
+                            {% set color = "#f56200" %}
+                        {% endif %}
+
+                        <div class="bullet" style="background:{{ color }};"></div>
+                        <span style="border-color:{{ color }};"> {{dict['path'][i]}} </span>
+                    </li>
+                {% endfor %}
             </ul>
     </div>
   </div>
 
-{{ destination }}
+
+
+<!-- {{ destination }} -->
 
 {% endblock %}

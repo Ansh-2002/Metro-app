@@ -2,14 +2,27 @@ from flask import *
 import sys, os
 import urllib.request, json
 from jinja2 import Template
-
-template = Template("My object: {{ my_object }}")
+import json
 
 app = Flask(__name__)
 app.secret_key = "abc"
 
 url = "https://us-central1-delhimetroapi.cloudfunctions.net/route-get?from=Dwarka&to=Palam"
 
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
+
+
+@app.route("/helpline")
+def help():
+    return render_template('helpline.html')
+
+@app.route("/teams")
+def team():
+    return render_template('teams.html')
+ 
 @app.route("/", methods =["GET", "POST"])
 def index():
     # if request.method == "POST":
@@ -18,7 +31,7 @@ def index():
     return render_template('index.html')
 
 @app.route("/path")
-def route(): 
+def route():
     source = request.args.get("from", "Dwarka").replace(' ','%20')
     destination = request.args.get("to", "Palam").replace(' ','%20')
     url="https://us-central1-delhimetroapi.cloudfunctions.net/route-get?from=" + source + "&to=" + destination
@@ -26,19 +39,36 @@ def route():
     data = response.read()
     dict = json.loads(data)
     if dict['status'] != 200:
-        return render_template ("faliure.html",status=dict['status']) 
+        status = dict['status']
+        msg=" "
+        if status == 204:
+            msg="same source and destination"
+        elif status == 4061:
+            msg="Invalid Source"
+        elif status == 4062:
+            msg="Invalid Destination"
+        elif status == 406:
+            msg = "Invalid Source and Destination"
+        return render_template ("faliure.html",status=msg)
     else:
-        # n=len(dict['interchange']) + 1
-        # prev =0 
-        # for i in range(0,n):
-        #     color= dict['line' + str(i + 1)] 
-        #     x = findIndex(dict, dict['interchange'][i])
-        #     for j in range(prev,x):
-                
-        #     prev = x
-                
         syle = "border-color: " + dict['line1'][0] + ";"
-        return render_template ("path.html", syle=syle,dict=dict)
+        cost = 0
+        n=len(dict['path'])
+        if n<=3:
+            cost=10
+        if n<=9:
+            cost=20
+        if n<=16:
+            cost= 30
+        if n<=25:
+            cost=40
+        if n<=35:
+            cost=50
+        else:
+            cost =60
+        
+
+        return render_template ("path.html", syle=syle,dict=dict,cost=cost)
 
 # def findIndex(dict , str):
 #     cnt=0
@@ -65,4 +95,21 @@ def nearest():
 @app.route("/near_test")
 def near_test():
     return render_template('near_test.html')
+
+@app.route("/search")
+def search():
+    searchName = request.args.get("search", "Dwarka")
+    return render_template('search.html',searchName=searchName)
+
+@app.route("/s")
+def s():
+    with open('data.json') as json_file:
+        data = json.load(json_file)
+    return data
+    return render_template("s.html")
+
+@app.route('/<path:catch_all>')
+def catch_all(catch_all):
+    return redirect('/')
+    #return render_template("404.html")
 
