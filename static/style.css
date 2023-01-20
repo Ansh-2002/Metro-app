@@ -57,7 +57,8 @@ body {
     background-color: #c7edfe;
     /* background-image: url("https://cdn-icons-png.flaticon.com/512/1034/1034897.png");
     opacity: 0.2;
-    background-size: cover; */background-repeat: no-repeat;
+    background-size: cover; */
+    background-repeat: no-repeat;
     background-size: 200px 300px;
     max-height: 700px;
     
@@ -287,9 +288,15 @@ ul {
   }
 
   .fare-time{
-    text-align: right;
-    margin-top: 1.3rem;;
-    margin-right: 2rem;
+    width: 25%;
+    /* padding: 0 20px; */
+    top: 170px;
+    right: 5%;
+    position: absolute;
+    text-align: left;
+    /* margin-top: 1.3rem;;
+    margin-right: 2rem; */
+    box-shadow: 0px 3px 10px rgb(187, 187, 187); margin-bottom:5%; padding: 20px 0; 
 }
 .containerx h4{
     padding-top: 2rem;
@@ -343,7 +350,7 @@ ul {
   } */
   #mySubmit {
     display: none;
-    background-color: DodgerBlue;
+    /* background-color: DodgerBlue; */
     color: #fff;
   }
 
@@ -406,20 +413,35 @@ ul {
     border-radius: 10px;
  }
 
- .bg2-colo1:hover{
-    background-color: rgb(204, 193, 255);
- }
 
- .bg2-colo2:hover{
-    background-color: #7ce2e1;
- }
+ /* .bg2-colo2:hover{
+    background-color: #fff28e
+ } */
 
  .foot-icon{
-    margin:25px;
+    margin:35px;
     justify-content: center;
     text-align: center;
 
  }
 
- /* 7ce2e1
-    c4b7ff*/
+ .search-box-inner-back{
+    background-image: url("/static/images/nav-img.jpeg");
+    background-repeat: no-repeat;
+    /* height :100% */
+
+  }
+
+ @media (max-width: 800px) {
+    .foot-change{
+        margin:10px;
+        width: 45px;
+        height: 45px;
+    }
+ }
+
+ .box-1-bgimg{
+    background-image: url("/static/images/train-op.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+ }

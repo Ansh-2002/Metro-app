@@ -113,3 +113,6 @@ def catch_all(catch_all):
     return redirect('/')
     #return render_template("404.html")
 
+if __name__ == "__main__":
+    app.run(debug=False,host='0.0.0.0')
+    
