@@ -7,8 +7,6 @@
     <div class="">
         <h5 id="station" class="station-name"> </h5>
 
-
-        <!-- table -->
         <table class="table">
           <tbody>
             <tr>
@@ -77,11 +75,9 @@
 
         </div>
     </div>
-<!-- </div> -->
-  
+
 
     <div id="map" style="height: 500px; width: 100%; margin-bottom: 50px; border-radius:20px;"></div>
- 
   {% endblock %}
 
 
@@ -90,7 +86,6 @@
 <script>
   const template1 = document.querySelector("[template1]")
   const lines = document.querySelector("[lines]")
-  
   const template2 = document.querySelector("[template2]")
   const layots = document.querySelector("[layots]")
 
@@ -148,8 +143,6 @@
                     if(element.details['disabled friendly'] ==  0){
                      parking = "No";
                    }
-                    
-                 
               }
           })
       initMap(anslo, ansla);
@@ -186,8 +179,6 @@
         text.textContent = element
         platforms.append(card);
       })
-      
-      
 
       })
   });

@@ -18,7 +18,9 @@
   </header>
   <nav>
     <nav class="navbar navie justify-content-between">
-      <a class="navbar-brand" href="/"><img src="/static/images/Delhi_Metro_logo.svg" ><h5>DELHI METRO</h5></a>
+      <div>
+      <a class="navbar-brand" href="/"><img src="/static/images/Delhi_Metro_logo.svg" ><h5>DELHI METRO</h5></a></div>
+      <!-- <div class="container"><img src="/static/images/nav-img.jpeg" alt="navimg" width="900" height="200"></div> -->
       <div class="dmrc">
         <div class="row">
             <div class="col">
@@ -59,7 +61,7 @@
   <div class="container" >
 
     <div class="row">
-      <div class="box-1 col-sm">
+      <div class="box-1 col-sm box-1-bgimg">
           <div class="row mb-4">
             <img class="w-10" src="/static/images/Delhi_Metro_logo.svg" >
             <h5><b>Plan Your Journey</b></h5>
@@ -75,7 +77,6 @@
                 <input name="from" type="search" class="form-control" id="from" placeholder="Type Station Name " autocomplete="off" >
                 </div>
               </div>
-
               <div class="form-group">
                 <label for="to to">To </label>
                 <div class="autocomplete" style="width:300px;">
@@ -91,8 +92,8 @@
               <form action="/search" method="get" autocomplete="off" >
                   <lable for="search" class="autocomplete" style="width:300px;">
                     <input name="search" id="myInput" type="text" placeholder="Type Station Name to search">
-                    <button type="submit" id="mySubmit" class="btn btn-primary search-button">Search</button>
-                  </lable>                 
+                    <button type="submit" id="mySubmit" class="btn btn-danger search-button my-3">Search</button>
+                  </lable>
               </form>
 
             <div class="row">
@@ -115,11 +116,9 @@
             </div>
         </div>
 
-      <!-- <div class="col-sm"> -->
         
         {% block body%}     {% endblock %}
    
-      <!-- </div> -->
 
 
     </div>
@@ -141,24 +140,24 @@
         <div class="col-md-12 py-5">
           <div class=" flex-center" style="text-align:center;">
             <!--Linkedin -->
-            <a class="foot-icon" href="https://www.linkedin.com/in/anshdeep-singh-5763091ba/">
+            <a class="foot-icon foot-change" href="https://www.linkedin.com/in/anshdeep-singh-5763091ba/">
               <img src="/static/images/ansh.jpg" alt="Ansh" width="65" height="65" class="conimg">
             </a>
-            <a class="foot-icon" href="https://www.linkedin.com/in/bhagavath-m-s-0aa482217/">
+            <a class="foot-icon foot-change" href="https://www.linkedin.com/in/bhagavath-m-s-0aa482217/">
               <img src="/static/images/bhagavath.jfif" alt="bms" width="65" height="65" class="conimg">
             </a>
-            <a class="foot-icon" href="https://www.linkedin.com/in/bharat-budhori/">
+            <a class="foot-icon foot-change" href="https://www.linkedin.com/in/bharat-budhori/">
               <img src="/static/images/bharat.jfif" alt="bharat" width="65" height="65" class="conimg">
             </a>
-            <a class="foot-icon" href="https://www.linkedin.com/in/ekaspreet-singh-a979bb195/">
+            <a class="foot-icon foot-change" href="https://www.linkedin.com/in/ekaspreet-singh-a979bb195/">
               <img src="/static/images/ekas.jfif" alt="ekas" width="65" height="65" class="conimg">
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="footer-copyright text-center py-2" style="background: rgb(52, 52, 52); color: white">© 2023 Copyright:
-      <a href="ekaspreet99@gmail.com"> Team MC</a>
+    <div class="footer-copyright text-center py-2" style="background: rgb(52, 52, 52); color: white">© 2023 Copyright: 
+      <a href="/teams"> Team MC</a>
     </div>
   </footer>
 </footer>
@@ -199,8 +198,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- <script src="https://kit.fontawesome.com/33a7cc0f79.js" crossorigin="anonymous"></script> -->
 {% block javascript %}     {% endblock %}
-
-
 
 </body>
 </html>
