@@ -81,6 +81,5 @@ def search():
 @app.route('/<path:catch_all>')
 def catch_all(catch_all):
     return redirect('/')
-
 if __name__ == "__main__":
     app.run(debug=False,host='0.0.0.0')
