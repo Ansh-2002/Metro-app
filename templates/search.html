@@ -3,8 +3,8 @@
 
 
 {% block body%}
-<div class="box-2 col  tableBox">
-    <div>
+<div class="box-2 col">
+    <!-- <div> -->
         <h5 id="station" class="station-name">{{searchName}} </h5>
 
 
@@ -76,7 +76,7 @@
         </table>
 
         </div>
-    </div>
+    <!-- </div> -->
 </div>
   
 
@@ -114,10 +114,6 @@
   }
 
 
-      // let longitude = 70;
-      // let latitude = 28;
-
-      // calculation of nearest metro station
       fetch('/static/data.json')
       .then((response) => response.json())
       .then(data => {
@@ -125,10 +121,7 @@
           let searchName = document.querySelector("#station").innerText;
 
           data.forEach(element => {
-            // console.log(element.name);
-            // console.log(searchName);
                 if(element.name.toString().toLowerCase() == searchName.toLowerCase()) {
-                  // console.log(element.name)
                   ansName = element.name;
                   stationLine = element.details.line;
                   layoutt = element.details.layout;
@@ -144,19 +137,14 @@
                    }
                     
                    initMap(element.details.longitude, element.details.latitude);
-                   //document.querySelector("#station").innerHTML = ansName;
-                   //document.querySelector("#station-name").innerHTML = ansName;
                    document.querySelector("#station-parking").innerHTML = parking;
                    document.querySelector("#station-elivator").innerHTML = elivator;
                    document.querySelector("#station-disabled").innerHTML = disabledFriendly;
-                   //console.log("yeyeyeyeyeyeyeye")
                   //  break;
               }
           })
 
 
-    
-          
       stationLine.forEach(element =>{
         const myArray = element.split(" ");
         let color = myArray[0];
@@ -181,10 +169,7 @@
         text.textContent = element
         platforms.append(card);
       })
-      
-      
 
      });
- 
 </script>
 {% endblock %}

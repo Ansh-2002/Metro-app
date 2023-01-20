@@ -5,15 +5,14 @@ from jinja2 import Template
 import json
 
 app = Flask(__name__)
-app.secret_key = "abc"
 
-url = "https://us-central1-delhimetroapi.cloudfunctions.net/route-get?from=Dwarka&to=Palam"
+@app.route("/", methods =["GET", "POST"])
+def index():
+    return render_template('index.html')
 
 @app.route("/about")
 def about():
     return render_template('about.html')
-
-
 
 @app.route("/helpline")
 def help():
@@ -22,13 +21,6 @@ def help():
 @app.route("/teams")
 def team():
     return render_template('teams.html')
- 
-@app.route("/", methods =["GET", "POST"])
-def index():
-    # if request.method == "POST":
-    # if "from" in request.args:
-         # return render_template(url)
-    return render_template('index.html')
 
 @app.route("/path")
 def route():
@@ -40,7 +32,7 @@ def route():
     dict = json.loads(data)
     if dict['status'] != 200:
         status = dict['status']
-        msg=" "
+        msg=" 404 not found"
         if status == 204:
             msg="same source and destination"
         elif status == 4061:
@@ -66,21 +58,10 @@ def route():
             cost=50
         else:
             cost =60
-        
-
         return render_template ("path.html", syle=syle,dict=dict,cost=cost)
-
-# def findIndex(dict , str):
-#     cnt=0
-#     for(i in dict['path']):
-#         if(i == str)
-#             return cnt
-#         cnt=cnt+1;
-    
 
 @app.route("/map")
 def map():
-    # return "hello worldd"
     return render_template('map.html')
 
 @app.route("/test")
@@ -92,26 +73,13 @@ app.run()
 def nearest():
     return render_template('nearest.html')
 
-@app.route("/near_test")
-def near_test():
-    return render_template('near_test.html')
-
 @app.route("/search")
 def search():
     searchName = request.args.get("search", "Dwarka")
     return render_template('search.html',searchName=searchName)
 
-@app.route("/s")
-def s():
-    with open('data.json') as json_file:
-        data = json.load(json_file)
-    return data
-    return render_template("s.html")
-
 @app.route('/<path:catch_all>')
 def catch_all(catch_all):
     return redirect('/')
-    #return render_template("404.html")
-    
 if __name__ == "__main__":
     app.run(debug=False,host='0.0.0.0')
